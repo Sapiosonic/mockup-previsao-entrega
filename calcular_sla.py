@@ -1,4 +1,9 @@
 from datetime import datetime
+import sqlite3
+
+connection = sqlite3.connect('database.db')
+cursor = connection.cursor()
+
 
 now = datetime.now()
 hours = 0
@@ -29,5 +34,15 @@ def calculate_sla():
     minutes = (sla % working_hours) * 60 / 60
     
     return f"{full_hours}d {int(minutes)}h"
+
+# retrieve data from DB
+cursor.execute("SELECT * FROM parametrizacao ")
+
+value = cursor.fetchall()
+
+cursor.close()
+connection.close()
+
+print(value)
 
 # source https://www.programiz.com/python-programming/datetime/current-time
