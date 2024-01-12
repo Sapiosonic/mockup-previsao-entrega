@@ -30,14 +30,4 @@ def calculate_sla():
     
     return f"{full_hours}d {int(minutes)}h"
 
-date = get_current_date()
-starting_time = get_current_time(now)
-test = calculate_sla()
-
-print(date) # get the date
-print(starting_time) # get the starting time
-print(test) # get the SLA
-
-
-
 # source https://www.programiz.com/python-programming/datetime/current-time
