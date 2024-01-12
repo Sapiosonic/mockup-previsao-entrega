@@ -1,13 +1,3 @@
-# Requisitos
-
-# 1. pegar a data atual ok
-# 2. separar em horas e minutos ok
-# 3. verificar se o horario atual é hora cheia ok
-    # se for, considerar esse horario ok
-    # se não for desconsiderar minutos e segundos e adicionar 1 hora ok
-# 4. retornar o horario inicial e começar a subtração das horas restantes
-# 5. sempre que completar um dia verificar se o próximo dia é dia útil
-
 from datetime import datetime
 
 now = datetime.now()
@@ -15,9 +5,11 @@ hours = 0
 sla = 18
 working_hours = 8
 
+# get the current date
 def get_current_date():
-    return print(now.strftime("%d-%m-%Y"))
+    return now.strftime("%d-%m-%Y")
 
+# get the current time
 def get_current_time(current_time):
     current_time = now.strftime("%H:%M:%S")
 
@@ -30,12 +22,21 @@ def get_current_time(current_time):
         current_time = now.strftime("%H")
         current_time_int = int(current_time)
         return current_time
+
+# calculate the Service Level Agreement time
+def calculate_sla():
+    full_hours = sla // working_hours
+    minutes = (sla % working_hours) * 60 / 60
     
-hours = get_current_time(now)
-print(hours)
+    return f"{full_hours}d {int(minutes)}h"
 
+date = get_current_date()
+starting_time = get_current_time(now)
+test = calculate_sla()
 
-
+print(date) # get the date
+print(starting_time) # get the starting time
+print(test) # get the SLA
 
 
 
