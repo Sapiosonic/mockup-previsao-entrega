@@ -11,7 +11,6 @@
 from datetime import datetime
 
 now = datetime.now()
-current_time = now
 hours = 0
 sla = 18
 working_hours = 8
@@ -22,8 +21,8 @@ def get_current_date():
 def get_current_time(current_time):
     current_time = now.strftime("%H:%M:%S")
 
-    if(int(current_time[4]) > 00):
-        if(int(current_time[6]) > 00):
+    if(int(current_time[4]) > 0):
+        if(int(current_time[6]) > 0):
             current_time = now.strftime("%H")
             current_time_int = int(current_time)
             return current_time_int + 1
@@ -32,13 +31,8 @@ def get_current_time(current_time):
         current_time_int = int(current_time)
         return current_time
     
-hours = get_current_time(current_time)
+hours = get_current_time(now)
 print(hours)
-
-
-
-
-
 
 
 
